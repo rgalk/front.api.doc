@@ -74,16 +74,19 @@
   position: relative;
   border-radius: 6px;
   box-shadow: var(--shadow-table);
+  display: block;
+  width: 100%;
 }
 
 .api-version-graph-table { 
-  border-collapse: separate;
+  border-collapse: collapse;
   border-spacing: 0;
   font-size: var(--font-size-base);
   margin: 0; 
-  width: auto;
+  width: 100%;
   font-family: var(--font-sans);
   border-radius: 6px;
+  display: table;
 }
 
 /* ============================================================================
@@ -119,21 +122,29 @@
   font-weight: 600;
   font-family: var(--font-mono);
   text-align: left; 
-  background: var(--bg-api-name);
+  background: var(--bg-api-name) !important;
   min-width: var(--min-api-name-width);
   font-size: var(--font-size-api-name);
   padding: var(--padding-api-name);
-  position: sticky; 
-  left: 0; 
-  z-index: var(--z-api-name);
+  position: sticky !important; 
+  left: 0 !important; 
+  z-index: var(--z-api-name) !important;
   border-right: var(--border-api-column);
   box-shadow: 2px 0 4px rgba(0,0,0,0.1);
   white-space: nowrap;
 }
 
+/* Убеждаемся что tbody td.api-name тоже sticky */
+.api-version-graph-table tbody td.api-name {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: var(--z-api-name) !important;
+  background: var(--bg-api-name) !important;
+}
+
 .api-version-graph-table th { 
-  position: sticky; 
-  top: 0; 
+  position: sticky !important; 
+  top: 0 !important; 
   font-size: var(--font-size-header);
   z-index: var(--z-header);
   color: #fff;
@@ -141,20 +152,23 @@
   letter-spacing: 0.3px;
   text-transform: uppercase;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: var(--gradient-header) !important;
 }
 
 .api-version-graph-table thead th:first-child {
-  position: sticky;
-  left: 0;
-  top: 0;
-  z-index: var(--z-sticky-corner);
+  position: sticky !important;
+  left: 0 !important;
+  top: 0 !important;
+  z-index: var(--z-sticky-corner) !important;
+  background: var(--gradient-header) !important;
 }
 
 /* Вторая строка заголовка (версии продукта) */
 .api-version-graph-table thead tr:nth-child(2) th {
-  position: sticky;
-  top: var(--header-row-height);
+  position: sticky !important;
+  top: var(--header-row-height) !important;
   z-index: var(--z-header);
+  background: var(--gradient-header) !important;
 }
 
 /* Угловые элементы для year-header */
@@ -170,9 +184,10 @@
   font-weight: 700;
   text-transform: none;
   letter-spacing: 0;
-  position: sticky;
-  top: 0;
+  position: sticky !important;
+  top: 0 !important;
   z-index: var(--z-header);
+  background: var(--gradient-year) !important;
 }
 
 .api-version-graph-table th.year-separator,
