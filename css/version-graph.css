@@ -31,14 +31,17 @@
   --border-api-column: 2px solid #d1d5da;
   
   /* Отступы */
-  --padding-cell: 4px 6px;
-  --padding-api-name: 4px 8px;
+  --padding-cell: 2px 6px;
+  --padding-api-name: 3px 8px;
   
   /* Размеры шрифтов */
   --font-size-base: 10px;
   --font-size-header: 8px;
   --font-size-year: 10px;
   --font-size-api-name: 10px;
+  
+  /* Высота строк заголовка */
+  --header-row-height: 18px;
   
   /* Минимальные размеры */
   --min-cell-width: 24px;
@@ -66,7 +69,7 @@
 
 #api-version-graph { 
   overflow-x: auto; 
-  max-height: 600px; 
+  max-height: 80vh; 
   overflow-y: auto; 
   position: relative;
   border-radius: 6px;
@@ -96,6 +99,7 @@
   min-width: var(--min-cell-width);
   transition: var(--transition-base);
   background: var(--bg-white);
+  line-height: 1.2;
 }
 
 .api-version-graph-table th:first-child,
@@ -123,6 +127,8 @@
   left: 0; 
   z-index: var(--z-api-name);
   border-right: var(--border-api-column);
+  box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+  white-space: nowrap;
 }
 
 .api-version-graph-table th { 
@@ -134,9 +140,25 @@
   font-weight: 600;
   letter-spacing: 0.3px;
   text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .api-version-graph-table thead th:first-child {
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: var(--z-sticky-corner);
+}
+
+/* Вторая строка заголовка (версии продукта) */
+.api-version-graph-table thead tr:nth-child(2) th {
+  position: sticky;
+  top: var(--header-row-height);
+  z-index: var(--z-header);
+}
+
+/* Угловые элементы для year-header */
+.api-version-graph-table th.year-header.api-name {
   position: sticky;
   left: 0;
   top: 0;
@@ -148,6 +170,9 @@
   font-weight: 700;
   text-transform: none;
   letter-spacing: 0;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
 }
 
 .api-version-graph-table th.year-separator,
